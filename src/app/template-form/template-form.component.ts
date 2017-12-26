@@ -6,15 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent implements OnInit {
-  userName: string = 'qqqqq';
+
+  model: FormModel;
 
   constructor() { }
 
   ngOnInit() {
+    this.model = new FormModel('username', 123, '123', '123', 123)
   }
 
-  onSubmit(form: any) {
-    console.log(form);
+  onSubmit() {
+    console.log(this.model);
   }
 
+}
+
+export class FormModel {
+  constructor(
+    public userName: string,
+    public mobile: number,
+    public pwd: string,
+    public confirmPwd: string,
+    public postCode: number
+  ){}
 }

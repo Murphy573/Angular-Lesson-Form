@@ -1,31 +1,35 @@
-<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
   <div>
     用户名：
-    <input ngModel="" name="userName" type="text">
+    <input [(ngModel)]="model.userName" #name="ngModel" name="userName" type="text" required="">
+    <span class="error" [hidden]="name.valid || name.pristine">
+      用户名必须
+    </span>
   </div>
   <div>
     手机号：
-    <input ngModel="" name="mobile" type="text">
+    <input [(ngModel)]="model.mobile"  name="mobile" type="number">
   </div>
   <div ngModelGroup="userPwd">
     <div>
       密码：
-      <input ngModel="" name="pwd" type="password">
+      <input [(ngModel)]="model.pwd" name="pwd" type="password">
     </div>
     <div>
       确认密码：
-      <input ngModel="" name="confirmPwd" type="password">
+      <input [(ngModel)]="model.confirmPwd" name="confirmPwd" type="password">
     </div>
   </div>
   <div>
     邮编：
-    <input ngModel="" name="postCode" type="number">
+    <input [(ngModel)]="model.postCode" name="postCode" type="number">
   </div>
 
   <div>
-    <button type="submit">提交</button>
+    <button [disabled]="myForm.form.invalid" type="submit">提交</button>
   </div>
 </form>
+
 
 
 <!--对于form标签隐式添加ngForm指令-->
