@@ -1,0 +1,55 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  <div>
+    用户名：
+    <input ngModel="" name="userName" type="text">
+  </div>
+  <div>
+    手机号：
+    <input ngModel="" name="mobile" type="text">
+  </div>
+  <div ngModelGroup="userPwd">
+    <div>
+      密码：
+      <input ngModel="" name="pwd" type="password">
+    </div>
+    <div>
+      确认密码：
+      <input ngModel="" name="confirmPwd" type="password">
+    </div>
+  </div>
+  <div>
+    邮编：
+    <input ngModel="" name="postCode" type="number">
+  </div>
+
+  <div>
+    <button type="submit">提交</button>
+  </div>
+</form>
+
+
+<!--对于form标签隐式添加ngForm指令-->
+<!--<form #myform="ngForm">
+  <div>
+    用户名:
+    <input type="text" ngModel name="userName">
+  </div>
+</form>
+{{myform.value | json}}==={{userName}}-->
+<!--对于其他标签显示添加ngForm指令-->
+<!--<div ngForm="">
+  <div>
+    用户名:
+    <input type="text">
+  </div>
+</div>-->
+<!--不希望angular接管时添加ngNoForm指令-->
+<!--<form action="/res" type="post" ngNoForm>
+  <div>
+    用户名:
+    <input type="text">
+  </div>
+  <div>
+    <button type="submit">提交</button>
+  </div>
+</form>-->
