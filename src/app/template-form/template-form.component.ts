@@ -20,7 +20,7 @@ export class TemplateFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.model = new FormModel('username', 123, '123', '123', 123, '', '')
+    this.model = new FormModel('username', 123, '123', '123', 123, 'male', 'chuzhong')
   }
 
   onSubmit() {
