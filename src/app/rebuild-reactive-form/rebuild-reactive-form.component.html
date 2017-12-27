@@ -1,5 +1,5 @@
 <h3>FormBuilder重构响应式表单</h3>
-<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>
   <div>
     用户名：
     <input [ngClass]="{'input-error': userNameErrors.hasError('*')}" type="text" formControlName="userName">
@@ -20,6 +20,14 @@
   <div>
     手机号：
     <input type="number" formControlName="mobile">
+    <span ngxErrors="mobile" class="error" #mobileErrors="ngxErrors">
+      <span ngxError="required" when="dirty">
+        手机号必须
+      </span>
+      <span ngxError="mobileError" when="dirty">
+        {{mobileErrors.getError('msg')}}
+      </span>
+    </span>
   </div>
   <div formGroupName="userPwd">
     <div>

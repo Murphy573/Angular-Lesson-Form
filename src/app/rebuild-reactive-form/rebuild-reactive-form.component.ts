@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormModel} from '../template-form/template-form.component';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {validateMobile} from '../shared/my-validators';
 
 @Component({
   selector: 'app-rebuild-reactive-form',
@@ -32,7 +33,12 @@ export class RebuildReactiveFormComponent implements OnInit {
           Validators.minLength(4)
         ]
       ],
-      mobile: [this.model.mobile],
+      mobile: [this.model.mobile,
+        [
+          validateMobile,
+          Validators.required
+        ]
+      ],
       userPwd: this.fb.group({
         pwd: [this.model.pwd],
         confirmPwd: [this.model.confirmPwd]
