@@ -1,0 +1,52 @@
+<h3>FormBuilder重构响应式表单</h3>
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+  <div>
+    用户名：
+    <input type="text" formControlName="userName">
+    <span class="error" [hidden]="this.formModel.get('userName').valid || this.formModel.get('userName').pristine">
+      用户名必须,长度不少于4位
+    </span>
+  </div>
+  <div>
+    手机号：
+    <input type="number" formControlName="mobile">
+  </div>
+  <div formGroupName="userPwd">
+    <div>
+      密码：
+      <input type="password" formControlName="pwd">
+    </div>
+    <div>
+      确认密码：
+      <input type="password" formControlName="confirmPwd">
+    </div>
+  </div>
+
+  <div>
+    性别：
+    <input type="radio" formControlName="sex"  value="male">男
+    <input type="radio" formControlName="sex"  value="female">女
+  </div>
+
+  <div>
+    学历：
+    <select formControlName="education" (change)="selectChange()">
+      <option value="">请选择学历</option>
+      <option *ngFor="let edu of eduOptions" [ngValue]="edu.value">{{edu.display}}</option>
+    </select>
+
+    <!--[ngValue]="edu" 选中后返回对象类型的数据-->
+  </div>
+
+  <div formArrayName="addresses">
+    <ng-container *ngFor="let address of formModel.get('addresses').controls; let i = index;">
+      <input [formControlName]="i">
+    </ng-container>
+  </div>
+  <div>
+    <button (click)="addAddress();">增加一个地址输入框</button>
+  </div>
+  <div>
+    <button [disabled]="formModel.invalid" type="submit">提交</button>
+  </div>
+</form>

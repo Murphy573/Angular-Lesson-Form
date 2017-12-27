@@ -17,13 +17,6 @@ export class ReactiveFormComponent implements OnInit {
     {value: 'yanjiusheng', display: '研究生'},
   ];
 
-  //假如用户有多个手机号
-  mobiles: FormArray = new FormArray([
-    new FormControl(123),    new FormControl(456),
-    new FormControl(789),
-    new FormControl(236),
-  ]);
-
   model: FormModel;
   formModel: FormGroup;
 
