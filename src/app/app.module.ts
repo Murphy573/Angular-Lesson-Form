@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
+import {NgxErrorsModule} from '@ultimate/ngxerrors';
+
 import { AppComponent } from './app.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
@@ -19,7 +21,8 @@ import { RebuildReactiveFormComponent } from './rebuild-reactive-form/rebuild-re
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxErrorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

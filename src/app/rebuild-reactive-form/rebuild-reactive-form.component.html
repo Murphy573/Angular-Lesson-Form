@@ -2,10 +2,20 @@
 <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
   <div>
     用户名：
-    <input type="text" formControlName="userName">
-    <span class="error" [hidden]="this.formModel.get('userName').valid || this.formModel.get('userName').pristine">
-      用户名必须,长度不少于4位
+    <input [ngClass]="{'input-error': userNameErrors.hasError('*')}" type="text" formControlName="userName">
+
+    <span ngxErrors="userName" class="error" #userNameErrors="ngxErrors">
+      <!--<span [ngxError]="['required', 'minlength']" [when]="['dirty']">
+        用户名必须,长度不少于{{userNameErrors.getError('minlength')?.requiredLength}}位
+      </span>-->
+      <span ngxError="required" when="dirty">
+        用户名必须
+      </span>
+      <span ngxError="minlength" when="dirty">
+        长度不少于{{userNameErrors.getError('minlength')?.requiredLength}}位
+      </span>
     </span>
+
   </div>
   <div>
     手机号：
