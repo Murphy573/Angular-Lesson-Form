@@ -47,6 +47,6 @@
     <button (click)="addAddress();">增加一个地址输入框</button>
   </div>
   <div>
-    <button  type="submit">提交</button>
+    <button [disabled]="formModel.invalid" type="submit">提交</button>
   </div>
 </form>
